@@ -57,7 +57,7 @@ export default function Sidebar({ effectiveRole }: SidebarProps) {
   }
 
   return (
-    <aside className="flex-none w-52 flex flex-col bg-white border-r border-gray-100 overflow-y-auto">
+    <aside className="flex-none w-[272px] flex flex-col bg-white border-r border-gray-100 overflow-y-auto">
       <nav className="flex-1 px-2 py-3" aria-label="Điều hướng chính">
         {groupOrder.map((group, gi) => {
           const meta = GROUP_META[group]

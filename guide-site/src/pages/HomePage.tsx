@@ -106,27 +106,31 @@ export default function HomePage() {
   const auth = useAuth()
   const role: Role = (auth?.valid ? auth.effectiveRole : null) ?? 'staff'
   const visible = CARDS.filter((c) => canSee(role, c.minRole))
+  const isOddLastCard = (index: number) => visible.length % 3 === 1 && index === visible.length - 1
 
   return (
-    <div>
+    <div className="w-full max-w-[1040px] mx-auto">
       {/* ── Page header ── */}
-      <div className="mb-8">
+      <div className="mb-9">
         <div className="flex items-center gap-2 mb-1">
           <Rocket size={18} className="text-emerald-500" />
-          <h1 className="text-xl font-semibold text-gray-900">Cẩm nang nội bộ</h1>
+          <h1 className="text-2xl font-semibold text-gray-900">Cẩm nang nội bộ</h1>
         </div>
-        <p className="text-sm text-gray-500 pl-7">
+        <p className="text-sm text-gray-500 pl-7 leading-relaxed">
           Chọn một chủ đề để xem hướng dẫn từng bước có hình minh họa.
         </p>
       </div>
 
       {/* ── Category cards ── */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-10">
-        {visible.map((card) => (
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 mb-12">
+        {visible.map((card, index) => (
           <NavLink
             key={card.to}
             to={card.to}
-            className="group flex items-center gap-4 px-4 py-4 bg-white border border-gray-200 rounded-xl hover:border-emerald-200 hover:shadow-md transition-all duration-150 cursor-pointer no-underline"
+            className={[
+              'group flex items-center gap-4 px-4 py-4 bg-white border border-gray-200 rounded-xl hover:border-emerald-200 hover:shadow-md transition-all duration-150 cursor-pointer no-underline',
+              isOddLastCard(index) ? 'xl:col-span-3 xl:max-w-[520px] xl:justify-self-center' : '',
+            ].join(' ')}
           >
             {/* Icon */}
             <div
@@ -159,11 +163,16 @@ export default function HomePage() {
       </div>
 
       {/* ── Quick start section ── */}
-      <div>
-        <p className="text-[11px] font-semibold uppercase tracking-widest text-gray-400 mb-3">
+      <div className="premium-accordion-wrapper p-5">
+        <div className="premium-light-bar" aria-hidden="true" />
+        <p className="text-[11px] font-semibold uppercase tracking-widest text-gray-400 mb-1">
           Bắt đầu nhanh theo vai trò
         </p>
-        <div className="flex flex-col gap-1.5">
+        <p className="text-sm text-gray-500 mb-4">
+          Chọn đúng luồng thao tác theo quyền để vào việc nhanh hơn.
+        </p>
+
+        <div className="flex flex-col gap-2">
           {QUICK_LINKS.filter((q) => {
             if (q.role === 'Admin') return canSee(role, 'admin')
             if (q.role === 'Trưởng nhóm') return canSee(role, 'leader')
@@ -172,7 +181,7 @@ export default function HomePage() {
             <NavLink
               key={link.to}
               to={link.to}
-              className="group flex items-center gap-3 px-3.5 py-2.5 rounded-lg bg-gray-50 hover:bg-gray-100 border border-transparent hover:border-gray-200 transition-all duration-150 cursor-pointer no-underline"
+              className="group flex items-center gap-3 px-3.5 py-3 rounded-lg bg-white/60 hover:bg-white border border-transparent hover:border-gray-200 transition-all duration-150 cursor-pointer no-underline"
             >
               <span
                 className={[

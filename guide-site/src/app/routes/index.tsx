@@ -22,6 +22,10 @@ export const router = createBrowserRouter([
         path: 'quick-start',
         lazy: () => import('@/pages/QuickStartPage').then((m) => ({ Component: m.default })),
       },
+      {
+        path: 'quick-start/:slug',
+        lazy: () => import('@/pages/QuickStartPage').then((m) => ({ Component: m.default })),
+      },
 
       // ——— Web Portal (/web/*) — khớp SITEMAP.md ———
       {
@@ -73,6 +77,10 @@ export const router = createBrowserRouter([
       // ——— FAQ (/faq) ———
       {
         path: 'faq',
+        lazy: () => import('@/pages/FaqPage').then((m) => ({ Component: m.default })),
+      },
+      {
+        path: 'faq/:slug',
         lazy: () => import('@/pages/FaqPage').then((m) => ({ Component: m.default })),
       },
 
