@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 \"C:\\\\Users\\\\AllianceAutomation\\\\.claude\\\\skills\\\\ui-ux-pro-max\\\\scripts\\\\search.py\" \"enterprise SaaS dashboard admin portal\" --domain product)",
+      "Bash(\"d:/Projects/QuocNam/github/Quoc-Nam-Guide/guide-site/src/app/routes/index.tsx\":*)"
+    ]
+  }
+}
