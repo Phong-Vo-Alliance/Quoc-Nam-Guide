@@ -15,6 +15,12 @@ type Frontmatter = {
 
 type MdxComponentProps = HTMLAttributes<HTMLElement> & {
   children?: ReactNode
+  target?: string
+  rel?: string
+  href?: string
+  src?: string
+  alt?: string
+  loading?: 'eager' | 'lazy'
 }
 
 type MDXModule = {
