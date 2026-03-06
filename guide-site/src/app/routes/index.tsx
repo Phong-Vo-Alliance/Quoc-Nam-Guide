@@ -11,54 +11,78 @@ export const router = createBrowserRouter([
     path: '/',
     element: <RootLayout />,
     children: [
+      // ——— Trang chủ ———
       {
         index: true,
         lazy: () => import('@/pages/HomePage').then((m) => ({ Component: m.default })),
       },
+
+      // ——— Quick Start (/quick-start/*) ———
       {
         path: 'quick-start',
         lazy: () => import('@/pages/QuickStartPage').then((m) => ({ Component: m.default })),
       },
+
+      // ——— Web Portal (/web/*) — khớp SITEMAP.md ———
       {
-        path: 'web-portal',
+        path: 'web/chat-nhom',
+        lazy: () => import('@/pages/web/ChatNhomPage').then((m) => ({ Component: m.default })),
+      },
+      {
+        path: 'web/staff-tong-quan',
+        lazy: () => import('@/pages/web/StaffTongQuanPage').then((m) => ({ Component: m.default })),
+      },
+      {
+        path: 'web/mo-nhat-ky',
+        lazy: () => import('@/pages/web/MoNhatKyPage').then((m) => ({ Component: m.default })),
+      },
+      {
+        path: 'web/xem-ho-so-file',
+        lazy: () => import('@/pages/web/XemHoSoFilePage').then((m) => ({ Component: m.default })),
+      },
+      {
+        path: 'web/notification-banner',
+        lazy: () => import('@/pages/web/NotificationBannerPage').then((m) => ({ Component: m.default })),
+      },
+      // Catch-all cho /web/* còn lại (stub)
+      {
+        path: 'web/*',
         lazy: () => import('@/pages/WebPortalPage').then((m) => ({ Component: m.default })),
       },
+
+      // ——— Mobile (/mobile/*) ———
       {
         path: 'mobile',
         lazy: () => import('@/pages/MobilePage').then((m) => ({ Component: m.default })),
       },
       {
-        path: 'faq',
-        lazy: () => import('@/pages/FaqPage').then((m) => ({ Component: m.default })),
+        path: 'mobile/*',
+        lazy: () => import('@/pages/MobilePage').then((m) => ({ Component: m.default })),
       },
-      // ——— Trưởng nhóm ———
+
+      // ——— Admin (/admin/*) ———
       {
-        path: 'leader/team',
-        lazy: () => import('@/pages/leader/TeamPage').then((m) => ({ Component: m.default })),
-      },
-      {
-        path: 'leader/reports',
-        lazy: () => import('@/pages/leader/ReportsPage').then((m) => ({ Component: m.default })),
-      },
-      // ——— Admin ———
-      {
-        path: 'admin/portal',
+        path: 'admin/tao-user',
         lazy: () => import('@/pages/admin/AdminPortalPage').then((m) => ({ Component: m.default })),
       },
       {
-        path: 'admin/settings',
-        lazy: () => import('@/pages/admin/AdminSettingsPage').then((m) => ({ Component: m.default })),
+        path: 'admin/*',
+        lazy: () => import('@/pages/admin/AdminPortalPage').then((m) => ({ Component: m.default })),
       },
+
+      // ——— FAQ (/faq) ———
       {
-        path: 'admin/data',
-        lazy: () => import('@/pages/admin/AdminDataPage').then((m) => ({ Component: m.default })),
+        path: 'faq',
+        lazy: () => import('@/pages/FaqPage').then((m) => ({ Component: m.default })),
       },
-      // ——— Tìm kiếm ———
+
+      // ——— Tìm kiếm (/search) ———
       {
         path: 'search',
         lazy: () => import('@/pages/SearchPage').then((m) => ({ Component: m.default })),
       },
-      // ——— 404 / không có quyền ———
+
+      // ——— 404 ———
       {
         path: '*',
         element: <NoPermissionPage />,

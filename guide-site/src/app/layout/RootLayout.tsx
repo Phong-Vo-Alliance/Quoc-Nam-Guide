@@ -35,7 +35,7 @@ export default function RootLayout() {
       auth.reason === 'invalid' ||
       auth.reason === 'expired'
 
-    if (needsToken) return <NoTokenPage reason={auth.reason} />
+    if (needsToken) return <NoTokenPage reason={auth.reason as 'missing' | 'invalid' | 'expired'} />
     return <NoPermissionPage reason={auth.reason} />
   }
 
@@ -50,7 +50,7 @@ export default function RootLayout() {
 
         {/* Vùng nội dung chính — cuộn độc lập */}
         <main className="flex-1 overflow-y-auto bg-gray-50">
-          <div className="max-w-4xl mx-auto px-6 py-8">
+          <div className="max-w-3xl mx-auto px-8 py-8">
             <Outlet />
           </div>
         </main>
