@@ -1,2 +1,5 @@
-import { createStubPage } from '../_StubPage'
-export default createStubPage('Nhật ký công việc', 'Mở nhật ký, thêm log cập nhật tiến độ, trao đổi và gửi ảnh/video minh chứng.')
+import ContentPage from '../ContentPage'
+
+export default function MoNhatKyPage() {
+  return <ContentPage section="web" slug="mo-nhat-ky" />
+}

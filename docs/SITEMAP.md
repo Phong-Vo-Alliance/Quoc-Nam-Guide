@@ -26,9 +26,9 @@
 
 | # | Tiêu đề | Role | Slug | Trạng thái |
 |---|---------|------|------|-----------|
-| 07 | Đăng nhập lần đầu | staff, leader, admin | `/web/dang-nhap` | ⭐ 🔴 |
+| 07 | Đăng nhập lần đầu | staff, leader, admin | `/web/dang-nhap` | ⭐ 🟢 |
 | 08 | Đổi mật khẩu bắt buộc | staff, leader, admin | `/web/doi-mat-khau` | ⭐ 🔴 |
-| 09 | Vào nhóm chat và gửi tin nhắn | staff, leader, admin | `/web/chat-nhom` | ⭐ 🔴 |
+| 09 | Vào nhóm chat và gửi tin nhắn | staff, leader, admin | `/web/chat-nhom` | ⭐ 🟢 |
 | 10 | Đính kèm file trong chat và xem lại | staff, leader, admin | `/web/dinh-kem-file-chat` | 🔴 |
 | 11 | Leader: Tổng quan tab Công Việc theo Loại Việc | leader, admin | `/web/leader-tong-quan-cong-viec` | 🔴 |
 | 12 | Leader: Tạo task mới | leader, admin | `/web/leader-tao-task` | ⭐ 🔴 |
@@ -36,7 +36,7 @@
 | 14 | Leader: Đổi người xử lý task | leader, admin | `/web/leader-doi-nguoi-xu-ly` | 🔴 |
 | 15 | Leader: Chuyển trạng thái task | leader, admin | `/web/leader-chuyen-trang-thai` | 🔴 |
 | 16 | Leader: Tiếp nhận thông tin từ tin nhắn | leader, admin | `/web/leader-tiep-nhan-thong-tin` | 🔴 |
-| 17 | Staff: Tổng quan "Công việc của tôi" | staff, leader, admin | `/web/staff-tong-quan` | ⭐ 🔴 |
+| 17 | Staff: Tổng quan "Công việc của tôi" | staff, leader, admin | `/web/staff-tong-quan` | ⭐ 🟢 |
 | 18 | Staff: Bắt đầu xử lý task | staff, leader, admin | `/web/staff-bat-dau-xu-ly` | ⭐ 🔴 |
 | 19 | Staff: Tick checklist & lưu tiến độ | staff, leader, admin | `/web/staff-checklist` | ⭐ 🔴 |
 | 20 | Staff: Gửi "Chờ duyệt" | staff, leader, admin | `/web/staff-gui-cho-duyet` | ⭐ 🔴 |

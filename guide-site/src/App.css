@@ -103,6 +103,72 @@
 }
 
 /* ============================================
+   Sidebar — Nút mục cha (có children, gập/mở)
+   ============================================ */
+.sidebar-parent-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.3rem 0.5rem;
+  border-radius: 0.375rem;
+  font-size: 0.8125rem; /* 13px — đồng nhất với sidebar-nav-item */
+  color: #4b5563;
+  background: none;
+  border: none;
+  border-left: 2px solid transparent;
+  cursor: pointer;
+  transition: background-color 0.1s, color 0.1s;
+  white-space: nowrap;
+  overflow: hidden;
+  text-align: left;
+}
+
+.sidebar-parent-btn:hover {
+  background-color: #f3f4f6;
+  color: #111827;
+  border-left-color: #d1d5db;
+}
+
+/* Mục cha đang chứa bài đang xem (nhưng accordion đóng) */
+.sidebar-parent-btn.has-active-child {
+  color: #065f46;
+  font-weight: 500;
+  border-left-color: #10b981;
+}
+
+/* ============================================
+   Sidebar — Bài con (thụt lề, không có icon)
+   ============================================ */
+.sidebar-child-item {
+  display: block;
+  /* Thụt lề = icon-width(14px) + gap(8px) + padding-left(8px) = 30px */
+  padding: 0.25rem 0.5rem 0.25rem 1.875rem;
+  border-radius: 0.375rem;
+  font-size: 0.75rem; /* 12px — nhỏ hơn mục cha một chút */
+  color: #6b7280;
+  text-decoration: none;
+  border-left: 2px solid transparent;
+  transition: background-color 0.1s, color 0.1s;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sidebar-child-item:hover {
+  background-color: #f3f4f6;
+  color: #111827;
+  border-left-color: #d1d5db;
+}
+
+.sidebar-child-item.active {
+  background-color: #f0fdf4;
+  color: #065f46;
+  font-weight: 500;
+  border-left-color: #10b981;
+}
+
+/* ============================================
    Content Area — MDX rendered content
    ============================================ */
 .content-area h1 {

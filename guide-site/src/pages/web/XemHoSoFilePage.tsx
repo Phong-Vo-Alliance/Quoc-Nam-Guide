@@ -1,2 +1,5 @@
-import { createStubPage } from '../_StubPage'
-export default createStubPage('File / Ảnh / Video', 'Xem hồ sơ file gắn với task hoặc chat, tải về theo phân quyền được cấp.')
+import ContentPage from '../ContentPage'
+
+export default function XemHoSoFilePage() {
+  return <ContentPage section="web" slug="xem-ho-so-file" />
+}

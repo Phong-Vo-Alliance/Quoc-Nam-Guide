@@ -1,2 +1,5 @@
-import { createStubPage } from '../_StubPage'
-export default createStubPage('Thông báo & Công cụ', 'Xem và điều hướng qua Notification Banner, quản lý Bookmark, Todo list và Quick Messages.')
+import ContentPage from '../ContentPage'
+
+export default function NotificationBannerPage() {
+  return <ContentPage section="web" slug="notification-banner" />
+}
