@@ -1,6 +1,8 @@
 import { normalizeVN } from './normalizeVN'
 
 const BASE_SYNONYMS: Record<string, string[]> = {
+  'đăng nhập': ['login', 'vao he thong', 'dang nhap lan dau'],
+  'mật khẩu': ['password', 'mat khau'],
   'công việc': ['task'],
   'nhật ký': ['log'],
   'loại việc': ['worktype'],

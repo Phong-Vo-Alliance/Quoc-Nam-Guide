@@ -29,12 +29,80 @@ export const router = createBrowserRouter([
 
       // ——— Web Portal (/web/*) — khớp SITEMAP.md ———
       {
+        path: 'web/dang-nhap',
+        lazy: () => import('@/pages/web/DangNhapLanDauPage').then((m) => ({ Component: m.default })),
+      },
+      {
         path: 'web/chat-nhom',
         lazy: () => import('@/pages/web/ChatNhomPage').then((m) => ({ Component: m.default })),
       },
       {
+        path: 'web/dinh-kem-file-chat',
+        lazy: () => import('@/pages/web/DinhKemFileChatPage').then((m) => ({ Component: m.default })),
+      },
+      {
         path: 'web/staff-tong-quan',
         lazy: () => import('@/pages/web/StaffTongQuanPage').then((m) => ({ Component: m.default })),
+      },
+      {
+        path: 'web/staff-bat-dau-xu-ly',
+        lazy: () => import('@/pages/web/StaffBatDauXuLyPage').then((m) => ({ Component: m.default })),
+      },
+      {
+        path: 'web/staff-checklist',
+        lazy: () => import('@/pages/web/StaffChecklistPage').then((m) => ({ Component: m.default })),
+      },
+      {
+        path: 'web/staff-gui-cho-duyet',
+        lazy: () => import('@/pages/web/StaffGuiChoDuyetPage').then((m) => ({ Component: m.default })),
+      },
+      {
+        path: 'web/xem-task-hoan-tat',
+        lazy: () => import('@/pages/web/XemTaskHoanTatPage').then((m) => ({ Component: m.default })),
+      },
+      {
+        path: 'web/them-log-nhat-ky',
+        lazy: () => import('@/pages/web/ThemLogNhatKyPage').then((m) => ({ Component: m.default })),
+      },
+      {
+        path: 'web/gui-anh-video-nhat-ky',
+        lazy: () => import('@/pages/web/GuiAnhVideoNhatKyPage').then((m) => ({ Component: m.default })),
+      },
+      {
+        path: 'web/quick-messages',
+        lazy: () => import('@/pages/web/QuickMessagesPage').then((m) => ({ Component: m.default })),
+      },
+      {
+        path: 'web/bookmark-danh-dau',
+        lazy: () => import('@/pages/web/BookmarkDanhDauPage').then((m) => ({ Component: m.default })),
+      },
+      {
+        path: 'web/bookmark-xem-lai',
+        lazy: () => import('@/pages/web/BookmarkXemLaiPage').then((m) => ({ Component: m.default })),
+      },
+      {
+        path: 'web/todo-list',
+        lazy: () => import('@/pages/web/TodoListPage').then((m) => ({ Component: m.default })),
+      },
+      {
+        path: 'web/leader-tong-quan-cong-viec',
+        lazy: () => import('@/pages/web/LeaderTongQuanCongViecPage').then((m) => ({ Component: m.default })),
+      },
+      {
+        path: 'web/leader-tao-task',
+        lazy: () => import('@/pages/web/LeaderTaoTaskPage').then((m) => ({ Component: m.default })),
+      },
+      {
+        path: 'web/leader-giao-task',
+        lazy: () => import('@/pages/web/LeaderGiaoTaskPage').then((m) => ({ Component: m.default })),
+      },
+      {
+        path: 'web/leader-doi-nguoi-xu-ly',
+        lazy: () => import('@/pages/web/LeaderDoiNguoiXuLyPage').then((m) => ({ Component: m.default })),
+      },
+      {
+        path: 'web/leader-chuyen-trang-thai',
+        lazy: () => import('@/pages/web/LeaderChuyenTrangThaiPage').then((m) => ({ Component: m.default })),
       },
       {
         path: 'web/mo-nhat-ky',

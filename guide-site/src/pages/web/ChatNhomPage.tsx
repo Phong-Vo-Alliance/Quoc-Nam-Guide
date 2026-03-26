@@ -1,2 +1,5 @@
-import { createStubPage } from '../_StubPage'
-export default createStubPage('Chat nội bộ', 'Vào nhóm chat, gửi tin nhắn, đính kèm file và xem lại lịch sử hội thoại.')
+import ContentPage from '../ContentPage'
+
+export default function ChatNhomPage() {
+  return <ContentPage section="web" slug="chat-nhom-gui-tin-nhan" />
+}

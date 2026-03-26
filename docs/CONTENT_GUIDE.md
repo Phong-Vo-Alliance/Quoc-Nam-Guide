@@ -1,200 +1,449 @@
-# Hướng Dẫn Viết Bài — Guide Site QuocNam
+📘 Hướng Dẫn Viết Bài — Guide Site QuocNam (Version 2)
+======================================================
+
 **Dành cho:** BA, QA  
-**Cập nhật lần cuối:** 2026-03-04  
+**Cập nhật lần cuối:** 2026-03-20
 
----
+***
 
-## 1. MDX Frontmatter Template
+🎯 0. Triết lý chung (RẤT QUAN TRỌNG)
+=====================================
 
-Mỗi file MDX BẮT BUỘC có frontmatter đầy đủ:
+> Người dùng KHÔNG đọc để hiểu  
+> → Họ đọc để **làm theo ngay lập tức**
 
-```markdown
----
-title: "Cách tạo task mới"
-roles: ["leader", "admin"]
-tags: ["task", "tạo task", "công việc", "giao việc"]
-lastUpdated: "2026-03-04"
-appVersion: "1.0.0"
----
-```
+### Nguyên tắc cốt lõi
+
+*   ✅ Ưu tiên **step-by-step rõ ràng**
+    
+*   ✅ Mỗi bước = 1 hành động
+    
+*   ✅ Nhìn ảnh → làm được ngay
+    
+*   ❌ Không phụ thuộc vào GIF/video
+    
+*   ❌ Không viết dài, không giải thích lan man
+    
+
+***
+
+🧱 1. MDX Frontmatter Template
+==============================
+
+\---  
+title: "Cách tạo task mới"  
+roles: \["leader", "admin"\]  
+tags: \["task", "tạo task", "công việc", "giao việc"\]  
+lastUpdated: "2026-03-20"  
+appVersion: "1.0.0"  
+\---
 
 ### Quy tắc từng field
 
-| Field | Bắt buộc | Giá trị hợp lệ | Ghi chú |
-|-------|---------|--------------|---------|
-| `title` | ✅ | Chuỗi bắt đầu bằng "Cách …" | Tiêu đề hiển thị trên trang |
-| `roles` | ✅ | `["staff"]` / `["leader","admin"]` / `["admin"]` / `["staff","leader","admin"]` | Array, lowercase |
-| `tags` | ✅ | Mảng từ khóa tiếng Việt | Dùng cho search |
-| `lastUpdated` | ✅ | `YYYY-MM-DD` | Ngày cập nhật gần nhất |
-| `appVersion` | ✅ | `1.0.0` | Phiên bản app lúc viết bài |
+Field
 
----
+Bắt buộc
 
-## 2. Cấu trúc bài viết (9 mục bắt buộc)
+Giá trị hợp lệ
 
-```markdown
----
-[frontmatter]
----
+Ghi chú
 
-## Ai dùng
-[Staff / Leader / Admin] — 1 dòng
+`title`
 
-## Khi nào dùng
-[1–2 câu mô tả tình huống cụ thể]
+✅
 
-## Điều kiện
-- [Điều kiện 1, ví dụ: Đã đăng nhập]
-- [Điều kiện 2, ví dụ: Là Leader của nhóm chat]
+Chuỗi bắt đầu bằng "Cách …"
 
-![Demo](./images/[số]-[tên-bài]-demo.gif)
+Không dùng tiếng Anh
 
-## Các bước
+`roles`
 
-### Bước 1 — [Tên bước ngắn gọn]
-![Bước 1](./images/[số]-[tên-bài]-buoc-01.webp)
-[Mô tả ngắn, tối đa 2 câu]
+✅
 
-### Bước 2 — [Tên bước ngắn gọn]
-![Bước 2](./images/[số]-[tên-bài]-buoc-02.webp)
-[Mô tả ngắn, tối đa 2 câu]
+`["staff"]`, `["leader","admin"]`, `["admin"]`, `["staff","leader","admin"]`
 
-[... tối đa 7 bước]
+lowercase
 
-## Kết quả mong đợi
-[Mô tả kết quả sau khi hoàn thành đúng]
+`tags`
 
-## Lỗi thường gặp
+✅
 
-| Lỗi | Nguyên nhân | Cách xử lý |
-|-----|-------------|------------|
-| [Lỗi 1] | [Nguyên nhân] | [Cách xử lý] |
-| [Lỗi 2] | [Nguyên nhân] | [Cách xử lý] |
+4–8 từ khóa tiếng Việt
 
-## Bài liên quan
-- [Tên bài liên quan 1](../đường-dẫn)
-- [Tên bài liên quan 2](../đường-dẫn)
+Dùng cho search
 
----
-*Cập nhật lần cuối: [lastUpdated] — Phiên bản ứng dụng: [appVersion]*
-```
+`lastUpdated`
 
----
+✅
 
-## 3. Quy tắc viết nội dung
+`YYYY-MM-DD`
 
-### Tiêu đề bài
-- ✅ Bắt đầu bằng **"Cách …"**
-- ✅ Ví dụ: *"Cách giao task cho nhân viên"*
-- ❌ Không dùng tên module: *"Hướng dẫn WorkType Assignment"*
+Ngày cập nhật
 
-### Số bước
-- **Tối thiểu:** 3 bước
-- **Tối đa:** 7 bước
-- Nếu nhiều hơn 7 bước → **tách thành 2 bài**
+`appVersion`
 
-### Mỗi bước
-- 1 ảnh minh họa (bắt buộc)
-- Tối đa 2 câu mô tả
-- Dùng động từ mệnh lệnh: *"Bấm", "Chọn", "Nhập", "Kéo"*
+✅
 
-### Ngôn ngữ
-- Tiếng Việt 100%
-- Không dùng tiếng Anh, kể cả thuật ngữ kỹ thuật
-- Dùng thuật ngữ đã định nghĩa trong bài 04 (Thuật ngữ)
+`1.0.0`
 
-### Tags (dùng cho search)
-- 4–8 tags mỗi bài
-- Bao gồm: tên tác vụ, tên màn hình, từ đồng nghĩa thông dụng
-- Ví dụ cho bài "Tạo task": `["task", "tạo task", "công việc mới", "giao việc", "leader"]`
+Version app
 
----
+***
 
-## 4. Chuẩn ảnh
+🧩 2. Cấu trúc bài viết (BẮT BUỘC)
+==================================
 
-### Thông số kỹ thuật
-| Loại | Format | Kích thước | Ghi chú |
-|------|--------|-----------|---------|
-| Screenshot desktop | WebP hoặc PNG | 1280px width | |
-| Screenshot mobile | WebP hoặc PNG | 390px width | |
-| GIF demo | GIF | 800px width, 15fps | 10–20 giây |
+\---  
+\[frontmatter\]  
+\---  
 
-### Highlight
-- Dùng **viền hoặc mũi tên** màu `#10B981` (emerald) để chỉ vùng thao tác
-- Không dùng màu đỏ (dễ nhầm với lỗi)
+  
+\## Khi nào dùng  
+\[1–2 câu mô tả tình huống cụ thể\]  
+  
+\## Điều kiện  
+\- \[Điều kiện 1\]  
+\- \[Điều kiện 2\]  
+  
+<!-- Demo (OPTIONAL — chỉ dùng khi thật sự cần) -->  
+  
+\## Các bước  
+  
+\### Bước 1 — \[Tên bước rõ nghĩa\]  
+!\[Bước 1\](./images/xx-buoc-01.webp)  
+\[Mô tả ≤ 2 câu\]  
+  
+\### Bước 2 — ...  
+!\[Bước 2\](...)  
+  
+\[... tối đa 7 bước\]  
+  
+\## Kết quả mong đợi  
+\[Mô tả kết quả\]  
+  
+\## Lỗi thường gặp  
+  
+| Lỗi | Nguyên nhân | Cách xử lý |  
+|-----|-------------|------------|  
+| ... | ... | ... |  
+  
+\## Bài liên quan  
+\- \[Tên bài\](../link)  
+\- \[Tên bài\](../link)  
+  
+\---  
+  
+\*Cập nhật lần cuối: \[lastUpdated\] — Phiên bản ứng dụng: \[appVersion\]\*
 
-### Đặt tên file ảnh
-```
-[số-bài]-[tên-bài-slug]-buoc-[số-bước].webp
-[số-bài]-[tên-bài-slug]-demo.gif
+***
+
+🔥 3. Quy tắc viết nội dung
+===========================
+
+3.1 Tiêu đề
+-----------
+
+*   ✅ Bắt buộc bắt đầu bằng **"Cách …"**
+    
+*   ✅ Ví dụ: _Cách đăng nhập hệ thống_
+    
+*   ❌ Không dùng tên kỹ thuật / tiếng Anh
+    
+
+***
+
+3.2 Số bước
+-----------
+
+*   Tối thiểu: **3 bước**
+    
+*   Tối đa: **7 bước**
+    
+
+👉 Nếu >7 bước → **tách bài**
+
+***
+
+3.3 Quy tắc “Atomic Step” (CỰC QUAN TRỌNG)
+------------------------------------------
+
+> Mỗi bước = 1 hành động duy nhất
+
+### ❌ Sai
+
+*   Nhập tài khoản và mật khẩu rồi bấm đăng nhập
+    
+
+### ✅ Đúng
+
+*   Bước 1 — Nhập tài khoản
+    
+*   Bước 2 — Nhập mật khẩu
+    
+*   Bước 3 — Bấm đăng nhập
+    
+
+***
+
+3.4 Mỗi bước phải có
+--------------------
+
+*   ✅ 1 ảnh
+    
+*   ✅ ≤ 2 câu mô tả
+    
+*   ✅ Dùng động từ mệnh lệnh:
+    
+    *   Bấm
+        
+    *   Chọn
+        
+    *   Nhập
+        
+    *   Kéo
+        
+
+***
+
+3.5 Ngôn ngữ
+------------
+
+*   100% tiếng Việt
+    
+*   Không dùng thuật ngữ tiếng Anh
+    
+*   Viết như đang hướng dẫn người không biết gì
+    
+
+***
+
+3.6 Heading phải có keyword (tối ưu search)
+-------------------------------------------
+
+### ❌ Không tốt
+
+Bước 2 — Tiếp tục
+
+### ✅ Tốt
+
+Bước 2 — Nhập mật khẩu
+
+👉 Giúp Fuse.js search hiệu quả hơn
+
+***
+
+🖼 4. Chuẩn ảnh (CỐT LÕI THAY GIF)
+==================================
+
+4.1 Nguyên tắc
+--------------
+
+> Screenshot + highlight = thay thế hoàn toàn GIF
+
+***
+
+4.2 Bắt buộc
+------------
+
+*   Mỗi bước = 1 ảnh
+    
+*   Ảnh phải:
+    
+    *   Rõ nét
+        
+    *   Đúng vị trí thao tác
+        
+    *   Không chứa nhiều hành động
+        
+
+***
+
+4.3 Highlight
+-------------
+
+*   Màu: **#10B981 (emerald)**
+    
+*   Dạng:
+    
+    *   Viền
+        
+    *   Mũi tên
+        
+
+### ❌ Không dùng
+
+*   Màu đỏ
+    
+*   Highlight nhiều chỗ
+    
+
+***
+
+4.4 Thông số kỹ thuật
+---------------------
+
+Loại
+
+Format
+
+Kích thước
+
+Desktop
+
+WebP/PNG
+
+1280px
+
+Mobile
+
+WebP/PNG
+
+390px
+
+***
+
+4.5 Đặt tên file
+----------------
+
+\[số-bài\]-\[slug\]-buoc-\[01\].webp
 
 Ví dụ:
-  12-giao-task-buoc-01.webp
-  12-giao-task-buoc-02.webp
-  12-giao-task-demo.gif
-```
 
-### Vị trí lưu
-```
-src/content/[nhóm]/images/[tên-file]
+07-dang-nhap-buoc-01.webp
 
-Ví dụ:
-  src/content/web/images/12-giao-task-buoc-01.webp
-  src/content/mobile/images/35-checklist-buoc-01.webp
-  src/content/admin/images/48-tao-user-buoc-01.webp
-```
+***
 
----
+4.6 Vị trí lưu
+--------------
 
-## 5. Callout Blocks (Note / Warning / Tip)
+src/content/\[nhóm\]/images/
 
-Dùng component `<Callout>` trong MDX:
+***
 
-```mdx
-<Callout type="note">
-  Chỉ Leader mới thấy nút "Giao task". Nếu bạn không thấy nút này,
-  vui lòng liên hệ Admin để kiểm tra vai trò tài khoản.
+🎥 5. GIF / Video (OPTIONAL)
+============================
+
+❗ KHÔNG bắt buộc
+----------------
+
+***
+
+✅ Chỉ dùng khi:
+---------------
+
+*   Drag & drop
+    
+*   Swipe mobile
+    
+*   Animation nhiều bước
+    
+
+***
+
+❌ Không dùng khi:
+-----------------
+
+*   Chỉ là click / nhập / chọn
+    
+*   Có thể giải thích bằng ảnh
+    
+
+***
+
+🎯 Rule
+-------
+
+> Nếu ảnh đã đủ hiểu → KHÔNG dùng GIF
+
+***
+
+🧠 6. Callout (Thay thế cho giải thích dài)
+===========================================
+
+<Callout type="note">  
+ Nội dung lưu ý  
+</Callout>  
+  
+<Callout type="warning">  
+ Nội dung cảnh báo  
+</Callout>  
+  
+<Callout type="tip">  
+ Mẹo sử dụng nhanh  
 </Callout>
 
-<Callout type="warning">
-  Sau khi gửi "Chờ duyệt", bạn không thể chỉnh sửa checklist.
-  Hãy kiểm tra kỹ trước khi gửi.
-</Callout>
+***
 
-<Callout type="tip">
-  Dùng phím tắt Quick Messages để tiết kiệm thời gian nhập nội dung lặp lại.
-</Callout>
-```
+🔍 7. Tags (Tối ưu search Fuse.js)
+==================================
 
----
+*   4–8 tags
+    
+*   Bao gồm:
+    
+    *   Tên tác vụ
+        
+    *   Từ đồng nghĩa
+        
+    *   Cách user thường nói
+        
 
-## 6. Quy trình publish bài mới
+### Ví dụ
 
-```
-1. Tạo file MDX theo template
-2. Viết nội dung + chụp ảnh
-3. Đặt ảnh đúng thư mục + đúng tên
-4. Tự review theo checklist:
-   □ Đúng role trong frontmatter
-   □ Ảnh rõ, có highlight
-   □ Có "Lỗi thường gặp" (≥ 2 lỗi)
-   □ Có "Bài liên quan" (≥ 2 link)
-   □ lastUpdated đúng ngày hôm nay
-5. Tạo Pull Request → QA review → PM duyệt → merge
-```
+\["đăng nhập", "login", "vào hệ thống", "tài khoản"\]
 
----
+***
 
-## 7. Quy trình update bài khi UI thay đổi
+✅ 8. Checklist trước khi publish
+================================
 
-```
-1. Dev/BA xác định bài bị ảnh hưởng bởi UI mới
-   → Dựa vào appVersion trong frontmatter
-2. Chụp ảnh UI mới theo đúng chuẩn (mục 4)
-3. Thay file ảnh cũ (GIỮ NGUYÊN tên file)
-4. Dùng AI hỗ trợ chỉnh nội dung MDX nếu cần
-5. Cập nhật lastUpdated và appVersion trong frontmatter
-6. Tạo Pull Request → QA review → PM duyệt → merge
-```
+□ Title bắt đầu bằng "Cách"  
+□ Đúng role  
+□ 3–7 bước  
+□ Mỗi bước có 1 ảnh  
+□ Highlight rõ  
+□ Không phụ thuộc GIF  
+□ Có ≥2 lỗi thường gặp  
+□ Có ≥2 bài liên quan  
+□ lastUpdated đúng
 
-> **Lưu ý:** Giữ nguyên tên file ảnh khi replace để tránh phải sửa đường dẫn trong MDX.
+***
+
+🚀 9. Quy trình publish
+=======================
+
+1\. Tạo file MDX  
+2\. Viết nội dung  
+3\. Chụp ảnh + highlight  
+4\. Đặt đúng tên file  
+5\. Self-review checklist  
+6\. PR → QA → PM → merge
+
+***
+
+🔄 10. Update khi UI thay đổi
+=============================
+
+1\. Xác định bài bị ảnh hưởng  
+2\. Chụp lại ảnh  
+3\. Replace ảnh (GIỮ NGUYÊN tên file)  
+4\. Update nội dung nếu cần  
+5\. Update lastUpdated + appVersion  
+6\. PR → review → merge
+
+***
+
+💡 11. Nguyên tắc vàng (PHẢI NHỚ)
+=================================
+
+### 1\. Không phụ thuộc GIF
+
+→ Ảnh phải đủ để làm theo
+
+### 2\. Không viết để đọc
+
+→ Viết để **làm ngay**
+
+### 3\. Không gộp bước
+
+→ 1 bước = 1 hành động

@@ -4,6 +4,8 @@ import tailwindcss from '@tailwindcss/vite'
 import mdx from '@mdx-js/rollup'
 import remarkFrontmatter from 'remark-frontmatter'
 import remarkMdxFrontmatter from 'remark-mdx-frontmatter'
+import remarkGfm from 'remark-gfm'
+import rehypeMdxImportMedia from 'rehype-mdx-import-media'
 import path from 'path'
 
 // https://vite.dev/config/
@@ -13,7 +15,8 @@ export default defineConfig({
     {
       enforce: 'pre',
       ...mdx({
-        remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter],
+        remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter, remarkGfm],
+        rehypePlugins: [rehypeMdxImportMedia],
       }),
     },
     // include chỉ .tsx/.ts/.jsx/.js để react plugin không đụng vào .mdx

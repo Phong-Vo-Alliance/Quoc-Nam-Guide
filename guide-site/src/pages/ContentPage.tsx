@@ -1,10 +1,12 @@
 import { useEffect, useMemo, useRef, useState, type ComponentType, type HTMLAttributes, type ReactNode } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import CalloutBlock from '@/components/CalloutBlock'
 import TOC, { type TocItem } from '@/components/TOC'
 
 interface ContentPageProps {
   section: string
+  /** Slug cố định — bỏ qua URL param, dùng cho page 1 bài cụ thể */
+  slug?: string
 }
 
 type Frontmatter = {
@@ -71,6 +73,15 @@ function buildSectionEntries(section: string) {
     .sort((a, b) => a.path.localeCompare(b.path))
 }
 
+/**
+ * Chuẩn hóa href nội bộ:
+ * - Xóa tiền tố số của đoạn cuối cùng: ../18-staff-foo → ../staff-foo
+ * - Giữ nguyên href tuyệt đối (/) và href ngoài (http/mailto)
+ */
+function normalizeInternalHref(href: string): string {
+  return href.replace(/(\/)(\d+-)([^/]+)$/, '$1$3')
+}
+
 const mdxComponents: Record<string, ComponentType<MdxComponentProps>> = {
   h1: (props) => <h1 {...props} />,
   h2: (props) => <h2 {...props} />,
@@ -79,21 +90,47 @@ const mdxComponents: Record<string, ComponentType<MdxComponentProps>> = {
   ul: (props) => <ul {...props} />,
   ol: (props) => <ol {...props} />,
   li: (props) => <li {...props} />,
-  a: (props) => <a {...props} target={props.target ?? '_blank'} rel={props.rel ?? 'noreferrer'} />,
+  /**
+   * Xử lý link trong MDX:
+   * - Link nội bộ (relative ../ hay absolute /) → React Router <Link> — điều hướng
+   *   cùng tab, giữ nguyên sessionStorage (token không bị mất).
+   * - Link ngoài (http/https/mailto) → <a target="_blank"> như cũ.
+   */
+  a: ({ href = '', children, target, rel, ...rest }) => {
+    const isExternal = /^(https?:|mailto:|\/\/)/.test(href)
+    if (isExternal) {
+      return (
+        <a href={href} target={target ?? '_blank'} rel={rel ?? 'noreferrer'} {...rest}>
+          {children}
+        </a>
+      )
+    }
+    // Nội bộ → cùng tab, chuẩn hóa tiền tố số (../18-foo → ../foo)
+    const to = normalizeInternalHref(href)
+    return <Link to={to}>{children}</Link>
+  },
   img: (props) => <img {...props} loading="lazy" />,
+  table: (props) => <table {...props} />,
+  thead: (props) => <thead {...props} />,
+  tbody: (props) => <tbody {...props} />,
+  tr: (props) => <tr {...props} />,
+  th: (props) => <th {...props} />,
+  td: (props) => <td {...props} />,
   Callout: CalloutBlock,
   CalloutBlock,
 }
 
-export default function ContentPage({ section }: ContentPageProps) {
-  const { slug } = useParams()
+export default function ContentPage({ section, slug: fixedSlug }: ContentPageProps) {
+  const { slug: paramSlug } = useParams()
+  // fixedSlug (từ prop) ưu tiên hơn URL param — dùng cho page 1 bài cố định
+  const resolvedSlug = fixedSlug ?? paramSlug
   const [MdxComponent, setMdxComponent] = useState<MDXModule['default'] | null>(null)
   const [frontmatter, setFrontmatter] = useState<Frontmatter>({})
   const [tocItems, setTocItems] = useState<TocItem[]>([])
   const articleRef = useRef<HTMLDivElement | null>(null)
 
   const entries = useMemo(() => buildSectionEntries(section), [section])
-  const activeSlug = slug ?? entries[0]?.slug ?? ''
+  const activeSlug = resolvedSlug ?? entries[0]?.slug ?? ''
 
   useEffect(() => {
     let isCancelled = false
@@ -177,6 +214,8 @@ export default function ContentPage({ section }: ContentPageProps) {
     <div className="w-full max-w-[1240px] mx-auto">
       <div className="xl:grid xl:grid-cols-[minmax(0,920px)_280px] xl:justify-between xl:gap-10">
         <article className="content-area w-full max-w-[920px]" ref={articleRef}>
+          {/* Tiêu đề render từ frontmatter — không viết h1 trong MDX */}
+          {frontmatter.title && <h1>{frontmatter.title}</h1>}
           <MdxComponent components={mdxComponents} />
 
           <footer className="article-footer">
