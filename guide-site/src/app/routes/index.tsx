@@ -105,6 +105,14 @@ export const router = createBrowserRouter([
         lazy: () => import('@/pages/web/LeaderChuyenTrangThaiPage').then((m) => ({ Component: m.default })),
       },
       {
+        path: 'web/leader-tiep-nhan-thong-tin',
+        lazy: () => import('@/pages/web/LeaderTiepNhanThongTinPage').then((m) => ({ Component: m.default })),
+      },
+      {
+        path: 'web/leader-duyet-hoan-tat',
+        lazy: () => import('@/pages/web/LeaderDuyetHoanTatPage').then((m) => ({ Component: m.default })),
+      },
+      {
         path: 'web/mo-nhat-ky',
         lazy: () => import('@/pages/web/MoNhatKyPage').then((m) => ({ Component: m.default })),
       },

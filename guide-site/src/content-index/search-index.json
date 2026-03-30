@@ -46,6 +46,51 @@
     "normalizedContent": "cach vao nhom chat va gui tin nhan. ai dung: staff, leader, admin. khi nao dung: khi can lien lac voi dong nghiep trong nhom cong viec hoac trao doi thong tin. dieu kien: da dang nhap, da duoc phan vao it nhat mot nhom chat. buoc 1: chon tab nhom o thanh ben trai de xem tat ca nhom chat dang tham gia. buoc 2: chon nhom chat muon vao, bam vao ten nhom trong danh sach. nhom co so do la nhom co tin nhan chua doc. buoc 3: nhap noi dung tin nhan vao o nhap tin nhan o phia duoi man hinh. buoc 4: bam nut gui hoac nhan ctrl+enter de gui tin nhan. ket qua mong doi: tin nhan xuat hien o cuoi khung chat, cac thanh vien nhan duoc ngay lap tuc. loi thuong gap: khong thay nhom chat do chua duoc them vao nhom. nut gui bi mo do o tin nhan trong. tin nhan khong gui duoc do mat ket noi mang."
   },
   {
+    "title": "Cách duyệt hoàn tất công việc",
+    "slug": "/web/leader-duyet-hoan-tat",
+    "excerpt": "Hướng dẫn Leader mở danh sách Chờ duyệt trong tab Công Việc, xem lại Nhật ký nhân viên và bấm Hoàn tất để xác nhận công việc đã hoàn thành.",
+    "category": "web",
+    "roles": ["leader", "admin"],
+    "tags": ["duyệt hoàn tất", "hoàn tất công việc", "chờ duyệt", "xác nhận hoàn thành", "nhóm công việc", "leader duyệt"],
+    "headings": [
+      "Khi nào dùng",
+      "Điều kiện",
+      "Các bước",
+      "Bước 1 — Bấm nút Nhóm để xem công việc toàn nhóm",
+      "Bước 2 — Bấm vào tiêu đề Chờ duyệt để mở danh sách",
+      "Bước 3 — Bấm Hoàn tất trên thẻ công việc cần duyệt",
+      "Bước 4 — Kiểm tra kết quả trong phần Hoàn thành hôm nay",
+      "Kết quả mong đợi",
+      "Lỗi thường gặp"
+    ],
+    "content": "Cách duyệt hoàn tất công việc. Khi nào dùng: Khi nhân viên đã bấm Chờ duyệt, thẻ chuyển vào hàng đợi và Leader cần xác nhận hoàn tất. Điều kiện: Leader hoặc Admin, đang mở nhóm chat có công việc Chờ duyệt, ở tab Công Việc chế độ Nhóm. Nút Hoàn tất chỉ hiện với Leader và Admin. Bước 1: Bấm nút Nhóm trong tab Công Việc, thống kê hiện số lượng chờ duyệt tô đậm màu cam. Bước 2: Bấm tiêu đề Chờ duyệt để mở danh sách, mỗi thẻ cho thấy tên công việc, người thực hiện và nút Hoàn tất. Bấm Nhật ký trên thẻ để xem lại checklist ảnh ghi chú trước khi duyệt. Bước 3: Bấm Hoàn tất, hệ thống cập nhật trạng thái, gửi thông báo vào chat, thẻ biến khỏi hàng Chờ duyệt. Bước 4: Cuộn xuống Hoàn thành hôm nay để xác nhận thẻ đã xuất hiện, số chờ duyệt giảm 1. Kết quả: Thẻ chuyển sang Hoàn thành, nhân viên nhận thông báo, số chờ duyệt giảm. Lỗi: Nút mờ do checklist chưa đủ. Không thấy Chờ duyệt do chưa chọn đúng Loại việc. Chỉ thấy nút Chờ duyệt do dùng tài khoản nhân viên. Thẻ không biến mất do mạng chậm.",
+    "normalizedTitle": "cach duyet hoan tat cong viec",
+    "normalizedContent": "cach duyet hoan tat cong viec. khi nao dung: khi nhan vien da bam cho duyet, the chuyen vao hang doi va leader can xac nhan hoan tat. dieu kien: leader hoac admin, dang mo nhom chat co cong viec cho duyet, o tab cong viec che do nhom. nut hoan tat chi hien voi leader va admin. buoc 1: bam nut nhom trong tab cong viec, thong ke hien so luong cho duyet to dam mau cam. buoc 2: bam tieu de cho duyet de mo danh sach, moi the cho thay ten cong viec, nguoi thuc hien va nut hoan tat. bam nhat ky tren the de xem lai checklist anh ghi chu truoc khi duyet. buoc 3: bam hoan tat, he thong cap nhat trang thai, gui thong bao vao chat, the bien khoi hang cho duyet. buoc 4: cuon xuong hoan thanh hom nay de xac nhan the da xuat hien, so cho duyet giam 1. ket qua: the chuyen sang hoan thanh, nhan vien nhan thong bao, so cho duyet giam. loi: nut mo do checklist chua du. khong thay cho duyet do chua chon dung loai viec. chi thay nut cho duyet do dung tai khoan nhan vien. the khong bien mat do mang cham."
+  },
+  {
+    "title": "Cách tiếp nhận thông tin từ tin nhắn",
+    "slug": "/web/leader-tiep-nhan-thong-tin",
+    "excerpt": "Hướng dẫn Leader hover vào tin nhắn, bấm biểu tượng hộp thư để tiếp nhận thông tin, rồi giao task từ thẻ thông tin trong tab Công Việc — mà không cần tạo task ngay lúc đọc chat.",
+    "category": "web",
+    "roles": ["leader", "admin"],
+    "tags": ["tiếp nhận thông tin", "xác nhận thông tin", "giao việc", "chuyển nhóm", "hộp thư", "tin nhắn quan trọng"],
+    "headings": [
+      "Khi nào dùng",
+      "Điều kiện",
+      "Các bước",
+      "Bước 1 — Di chuyển chuột lên tin nhắn cần tiếp nhận",
+      "Bước 2 — Bấm biểu tượng hộp thư (Tiếp nhận thông tin)",
+      "Bước 3 — Mở bảng bên phải, chọn tab Công Việc",
+      "Bước 4 — Bấm Giao việc để xử lý thông tin",
+      "Bước 5 — Chọn nhóm, loại việc và người nhận rồi xác nhận",
+      "Kết quả mong đợi",
+      "Lỗi thường gặp"
+    ],
+    "content": "Cách tiếp nhận thông tin từ tin nhắn. Khi nào dùng: Khi đọc tin nhắn trong nhóm chat có thông tin cần xử lý như hàng về, sự cố, yêu cầu cần theo dõi, nhưng chưa muốn tạo task ngay. Điều kiện: Leader hoặc Admin, đang xem nhóm chat, tin nhắn chưa được giao task và chưa tiếp nhận trước đó. Chức năng chỉ hiện với Leader và Admin. Bước 1: Di chuột lên tin nhắn, thanh công cụ nhỏ hiện ra. Bước 2: Bấm biểu tượng hộp thư, hệ thống xác nhận và dòng Đã tiếp nhận bởi tên bạn xuất hiện bên dưới tin nhắn. Bước 3: Mở bảng bên phải, bấm tab Công Việc, mục Thông tin đã tiếp nhận hiện số lượng chờ xử lý. Bước 4: Tìm thẻ thông tin vừa tiếp nhận, bấm Giao việc, cửa sổ giao việc mở với nội dung điền sẵn từ tin nhắn gốc. Bước 5: Chọn Nhóm đích, Loại việc và người được giao, bấm Giao việc để tạo task. Kết quả: Task xuất hiện trong nhóm nhận, thẻ hiển thị Đã chuyển sang nhóm hoặc Đã giao task, dòng tiếp nhận dưới tin nhắn gốc giữ nguyên. Lỗi: Không thấy hộp thư do đã tiếp nhận hoặc đã có task. Không thấy dù là Leader do hover lên tin nhắn hệ thống. Mục thông tin không xuất hiện do chưa tiếp nhận. Không chọn được người nhận do không thuộc nhóm đích.",
+    "normalizedTitle": "cach tiep nhan thong tin tu tin nhan",
+    "normalizedContent": "cach tiep nhan thong tin tu tin nhan. khi nao dung: khi doc tin nhan trong nhom chat co thong tin can xu ly nhu hang ve, su co, yeu cau can theo doi, nhung chua muon tao task ngay. dieu kien: leader hoac admin, dang xem nhom chat, tin nhan chua duoc giao task va chua tiep nhan truoc do. chuc nang chi hien voi leader va admin. buoc 1: di chuot len tin nhan, thanh cong cu nho hien ra. buoc 2: bam bieu tuong hop thu, he thong xac nhan va dong da tiep nhan boi ten ban xuat hien ben duoi tin nhan. buoc 3: mo bang ben phai, bam tab cong viec, muc thong tin da tiep nhan hien so luong cho xu ly. buoc 4: tim the thong tin vua tiep nhan, bam giao viec, cua so giao viec mo voi noi dung dien san tu tin nhan goc. buoc 5: chon nhom dich, loai viec va nguoi duoc giao, bam giao viec de tao task. ket qua: task xuat hien trong nhom nhan, the hien thi da chuyen sang nhom hoac da giao task, dong tiep nhan duoi tin nhan goc giu nguyen. loi: khong thay hop thu do da tiep nhan hoac da co task. khong thay du la leader do hover len tin nhan he thong. muc thong tin khong xuat hien do chua tiep nhan. khong chon duoc nguoi nhan do khong thuoc nhom dich."
+  },
+  {
     "title": "Cách chuyển trạng thái công việc",
     "slug": "/web/leader-chuyen-trang-thai",
     "excerpt": "Hướng dẫn Leader chuyển trạng thái công việc qua các bước Chưa xử lý → Đang xử lý → Chờ duyệt → Hoàn thành. Leader có thể bấm Hoàn tất trực tiếp để duyệt khi nhân viên nộp kết quả.",
