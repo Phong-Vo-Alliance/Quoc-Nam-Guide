@@ -65,10 +65,12 @@ function buildSectionEntries(section: string) {
     .filter((path) => path.includes(`/content/${section}/`))
     .map((path) => {
       const filename = path.split('/').pop() ?? ''
-      return {
-        path,
-        slug: normalizeSlug(filename),
+      let slug = normalizeSlug(filename)
+      const prefix = section + '-'
+      if (slug.startsWith(prefix)) {
+        slug = slug.slice(prefix.length)
       }
+      return { path, slug }
     })
     .sort((a, b) => a.path.localeCompare(b.path))
 }

@@ -1,0 +1,278 @@
+---
+title: Quy tắc phân quyền
+roles: ["staff", "leader", "admin"]
+tags: ["quyền", "phân quyền", "role", "staff", "leader", "admin", "quyền hạn"]
+lastUpdated: "2026-04-14"
+appVersion: "2.4.0"
+---
+
+Bài này giải thích rõ từng quyền hạn tương ứng với từng vai trò trong hệ thống. Hiểu bảng phân quyền giúp bạn biết được mình có thể làm gì và không thể làm gì.
+
+<Callout type="note" title="Tại sao cần phân quyền?">
+Phân quyền đảm bảo mỗi người chỉ có thể thực hiện những hành động phù hợp với vai trò của họ, bảo vệ dữ liệu và duy trì trật tự trong hệ thống.
+</Callout>
+
+---
+
+## Tổng quan 3 cấp độ quyền
+
+Hệ thống Quốc Nam có **3 vai trò chính** với quyền hạn tăng dần:
+
+```
+Staff (Nhân viên)
+    ↓ Quyền tăng
+Leader (Trưởng phòng)
+    ↓ Quyền tăng
+Admin (Quản trị viên)
+```
+
+---
+
+## 1️⃣ Staff (Nhân viên)
+
+### Mô tả
+Vai trò cơ bản cho nhân viên thực hiện công việc hàng ngày.
+
+### Quyền hạn chi tiết
+
+#### Chat (Trò chuyện)
+| Chức năng | Có thể | Ghi chú |
+|-----------|--------|---------|
+| Xem tin nhắn nhóm | ✅ | Chỉ xem nhóm mình tham gia |
+| Gửi tin nhắn | ✅ | Gửi trong nhóm hoặc DM |
+| Đính kèm file | ✅ | Hỗ trợ hình ảnh, PDF, Office, video |
+| Mention (@) người khác | ✅ | Gửi thông báo cụ thể tới 1 người |
+| Xóa tin nhắn của mình | ✅ | Chỉ xóa được tin nhắn của chính mình |
+| Xóa tin nhắn người khác | ❌ | Không có quyền |
+| Quản lý thành viên nhóm | ❌ | Leader/Admin mới có |
+
+#### Công việc (Task Management)
+| Chức năng | Có thể | Ghi chú |
+|-----------|--------|---------|
+| Xem công việc được giao | ✅ | Thấy danh sách task của chính mình |
+| Tick/hoàn thành checklist | ✅ | Đánh dấu từng mục khi xong |
+| Gửi kết quả chờ duyệt | ✅ | Gửi để Leader duyệt |
+| Thêm ghi chú/comment | ✅ | Ghi chép tiến độ, vấn đề gặp phải |
+| Đính kèm file/ảnh minh chứng | ✅ | Gửi kèm theo kết quả |
+| Tạo công việc mới | ❌ | Chỉ Leader/Admin mới có |
+| Giao công việc cho người khác | ❌ | Chỉ Leader/Admin mới có |
+| Duyệt công việc | ❌ | Chỉ Leader/Admin mới có |
+| Thay đổi trạng thái công việc | ⚠️ | Chỉ có thể chuyển ở vài trạng thái nhất định |
+
+#### Nhật ký (Journal)
+| Chức năng | Có thể | Ghi chú |
+|-----------|--------|---------|
+| Tạo entry nhật ký | ✅ | Ghi chép hàng ngày |
+| Gửi nhật ký cho duyệt | ✅ | Yêu cầu xác nhận từ Leader |
+| Xem nhật ký cá nhân | ✅ | Chỉ xem của chính mình |
+| Xem nhật ký người khác | ❌ | Không thể xem |
+| Duyệt nhật ký | ❌ | Chỉ Leader/Admin mới có |
+
+#### Bookmark & Thông báo
+| Chức năng | Có thể | Ghi chú |
+|-----------|--------|---------|
+| Đánh dấu (bookmark) tin nhắn | ✅ | Lưu lại để xem lại |
+| Gỡ bookmark | ✅ | Xóa bookmark của chính mình |
+| Tắt thông báo nhóm cụ thể | ✅ | Chỉ ảnh hưởng cài đặt cá nhân |
+
+### Ví dụ hành động Staff
+
+✅ **Được phép:**
+- "Tôi gửi tin nhắn trong nhóm kế toán để báo cáo tiến độ"
+- "Tôi tick checklist 'Kiểm tra hóa đơn' khi đã hoàn thành"
+- "Tôi gửi kết quả công việc kèm ảnh chứng minh"
+- "Tôi DM trưởng phòng để hỏi vấn đề công việc"
+- "Tôi đánh dấu tin nhắn quan trọng để xem lại sau"
+
+❌ **Không được phép:**
+- "Tôi tạo công việc mới giao cho đồng nghiệp"
+- "Tôi duyệt công việc của Nguyễn Văn A"
+- "Tôi xóa tin nhắn của Trần Thị B trong nhóm"
+- "Tôi xem nhật ký công việc của đồng nghiệp"
+
+---
+
+## 2️⃣ Leader (Trưởng phòng / Quản lý)
+
+### Mô tả
+Vai trò quản lý công việc nhóm/phòng ban, có mọi quyền của Staff cộng thêm:
+
+### Quyền hạn bổ sung so với Staff
+
+#### Quản lý công việc
+| Chức năng | Có thể | Ghi chú |
+|-----------|--------|---------|
+| Tạo công việc mới | ✅ | Tạo task và giao cho nhân viên |
+| Giao công việc | ✅ | Giao cho 1 hoặc nhiều nhân viên |
+| Chươi công việc sang người khác | ✅ | Di chuyển task giữa các thành viên |
+| Duyệt/Từ chối kết quả công việc | ✅ | Xem kết quả, phê duyệt hoặc yêu cầu làm lại |
+| Thay đổi trạng thái công việc | ✅ | Thay đổi các trạng thái theo workflow |
+| Edit tiêu đề/deadline công việc | ✅ | Cập nhật thông tin công việc |
+| Xóa công việc | ⚠️ | Chỉ có thể xóa những công việc chưa được giao |
+| Xem tất cả công việc nhóm | ✅ | Thấy task của toàn bộ thành viên |
+
+#### Quản lý nhân viên
+| Chức năng | Có thể | Ghi chú |
+|-----------|--------|---------|
+| Xem danh sách nhân viên dưới quản lý | ✅ | Thấy ai là thành viên của nhóm |
+| Xem tiến độ công việc từng nhân viên | ✅ | Theo dõi ai đang làm gì |
+| Xem báo cáo nhóm | ✅ | Tổng hợp tiến độ, năng suất |
+| Xem nhật ký nhân viên | ✅ | Duyệt nhật ký được gửi |
+| Thay đổi vai trò nhân viên | ❌ | Chỉ Admin mới có |
+| Khoá/mở khoá tài khoản | ❌ | Chỉ Admin mới có |
+
+#### Cấu hình nhóm
+| Chức năng | Có thể | Ghi chú |
+|-----------|--------|---------|
+| Tạo mẫu checklist cho nhóm | ⚠️ | Có thể (tùy cấu hình) |
+| Quản lý thành viên nhóm chat | ✅ | Thêm/bớt người trong nhóm |
+| Đặt tên/mô tả nhóm | ✅ | Cập nhật thông tin nhóm |
+
+### Ví dụ hành động Leader
+
+✅ **Được phép:**
+- "Tôi tạo công việc 'Cập nhật báo cáo tháng 3' và giao cho Nguyễn Văn A"
+- "Tôi xem danh sách công việc toàn bộ nhân viên để kiểm tra tiến độ"
+- "Tôi duyệt kết quả công việc của Trần Thị B và nhận xét"
+- "Tôi yêu cầu Văn A làm lại công việc vì chất lượng chưa đạt"
+- "Tôi xem nhật ký công việc của nhân viên để đánh giá"
+- "Tôi chuyển công việc từ Văn A sang Văn B nếu cần"
+
+❌ **Không được phép:**
+- "Tôi tạo tài khoản mới cho nhân viên" (chỉ Admin)
+- "Tôi xem công việc của phòng bộ phận khác" (ngoài phạm vi quản lý)
+- "Tôi thay đổi việc của Leader khác" (chỉ quản lý nhóm của mình)
+
+---
+
+## 3️⃣ Admin (Quản trị viên)
+
+### Mô tả
+Vai trò cao nhất, có mọi quyền trong hệ thống.
+
+### Quyền hạn bổ sung so với Leader
+
+#### Quản lý tài khoản & quyền
+| Chức năng | Có thể | Ghi chú |
+|-----------|--------|---------|
+| Tạo tài khoản người dùng mới | ✅ | Thêm nhân viên, leader vào hệ thống |
+| Xóa tài khoản | ✅ | Gỡ nhân viên khỏi hệ thống |
+| Đặt lại / Reset mật khẩu | ✅ | Giúp người dùng quên mật khẩu |
+| Khoá / Mở khoá tài khoản | ✅ | Ngăn/cho phép người dùng đăng nhập |
+| Thay đổi vai trò (Staff ↔ Leader ↔ Admin) | ✅ | Nâng/hạ cấp quyền |
+| Đặt Department cho người dùng | ✅ | Gán nhân viên vào phòng ban |
+
+#### Cấu hình hệ thống
+| Chức năng | Có thể | Ghi chú |
+|-----------|--------|---------|
+| Tạo mẫu danh sách kiểm tra | ✅ | Tạo template checklist chung cho cả công ty |
+| Quản lý Department | ✅ | Thêm/xóa/sửa cấu trúc phòng ban |
+| Cấu hình Category | ✅ | Thêm loại công việc, danh mục |
+| Xem báo cáo toàn hệ thống | ✅ | Thống kê tất cả công việc, người dùng, hoạt động |
+| Quản lý quyền truy cập | ✅ | Chỉnh sửa quy tắc quyền |
+| Xuất/nhập dữ liệu | ✅ | Backup hoặc import dữ liệu lớn |
+
+#### Quản trị nâng cao
+| Chức năng | Có thể | Ghi chú |
+|-----------|--------|---------|
+| Xem tất cả tin nhắn, công việc, nhật ký | ✅ | Toàn quyền truy cập mọi dữ liệu |
+| Xóa tin nhắn, công việc bất kỳ | ✅ | Có thể xoá bất kì dữ liệu nào |
+| Chỉnh sửa thông tin người dùng | ✅ | Thay đổi tên, email, thông tin khác |
+| Cấu hình email/thông báo hệ thống | ✅ | Quản lý cảnh báo toàn hệ thống |
+
+### Ví dụ hành động Admin
+
+✅ **Được phép:**
+- "Tôi tạo tài khoản mới cho nhân viên Lê Văn C vừa nhập vào"
+- "Tôi đặt mật khẩu lại cho nhân viên quên mật khẩu"
+- "Tôi nâng Nguyễn Văn A từ Staff lên Leader của phòng Kế toán"
+- "Tôi tạo mẫu checklist 'Kiểm tra hóa đơn' cho tất cả phòng dùng"
+- "Tôi xem báo cáo hoàn tất công việc của toàn công ty tháng này"
+- "Tôi xóa một công việc do nhập sai"
+
+---
+
+## Bảng so sánh nhanh
+
+| Chức năng | Staff | Leader | Admin |
+|-----------|-------|--------|-------|
+| **Chat & Tin nhắn** |
+| Gửi tin nhắn | ✅ | ✅ | ✅ |
+| Đính kèm file | ✅ | ✅ | ✅ |
+| Xóa tin của người khác | ❌ | ❌ | ✅ |
+| **Công việc** |
+| Xem công việc được giao | ✅ | ✅ | ✅ |
+| Tick checklist | ✅ | ✅ | ✅ |
+| Tạo công việc mới | ❌ | ✅ | ✅ |
+| Giao công việc | ❌ | ✅ | ✅ |
+| Duyệt công việc | ❌ | ✅ | ✅ |
+| Xem tất cả công việc nhóm | ❌ | ✅ | ✅ |
+| Xem tất cả công việc hệ thống | ❌ | ❌ | ✅ |
+| **Nhân sự** |
+| Xem nhân viên dưới quản lý | ❌ | ✅ | ✅ |
+| Tạo tài khoản mới | ❌ | ❌ | ✅ |
+| Thay đổi vai trò | ❌ | ❌ | ✅ |
+| Khoá tài khoản | ❌ | ❌ | ✅ |
+| **Cấu hình** |
+| Tạo mẫu checklist | ⚠️ | ⚠️ | ✅ |
+| Quản lý department | ❌ | ❌ | ✅ |
+| Xem báo cáo hệ thống | ❌ | ❌ | ✅ |
+
+*⚠️ = Tùy cấu hình hoặc có giới hạn*
+
+---
+
+## Tình huống thường gặp
+
+### Tình huống 1: Nhân viên muốn thay đổi deadline công việc
+**Hành động:** ❌ Không thể tự thay đổi
+**Chi tiết:** Staff chỉ có thể ghi chú hoặc yêu cầu Leader thay đổi, không thể sửa trực tiếp
+**Cách giải quyết:** Gửi tin nhắn cho Leader hoặc @nhắc đến Leader trong tin nhắn công việc
+
+### Tình huống 2: Leader muốn xem công việc của phòng bộ phận khác
+**Hành động:** ❌ Không có quyền
+**Chi tiết:** Leader chỉ quản lý công việc phòng/nhóm của chính mình
+**Cách giải quyết:** Liên hệ Leader phòng đó hoặc yêu cầu Admin cấp quyền
+
+### Tình huống 3: Admin muốn tạo tài khoản nhân viên mới
+**Hành động:** ✅ Có thể thực hiện
+**Chi tiết:** Admin có toàn quyền quản lý tài khoản
+**Cách thực hiện:** Vào mục Quản trị → Tài khoản người dùng → Tạo mới
+
+### Tình huống 4: Nhân viên vô tình xóa tin nhắn quan trọng
+**Hành động:** ❌ Không thể phục hồi (nếu chỉ Staff)
+**Chi tiết:** Staff chỉ xóa được tin nhắn của chính mình, và không thể khôi phục
+**Cách giải quyết:** Yêu cầu Admin hoặc Leader giúp khôi phục từ backup
+
+### Tình huống 5: Nhân viên quên mật khẩu
+**Hành động:** ❌ Nhân viên không thể tự reset
+**Chi tiết:** Chỉ Admin hoặc Leader (tùy cấu hình) mới có thể reset
+**Cách giải quyết:** Liên hệ Admin để xin reset mật khẩu mới
+
+---
+
+## Nguyên tắc vàng
+
+<Callout type="warning">
+**Không vượt quá quyền hạn**
+
+Nếu bạn thấy một chức năng bị ẩn hoặc báo lỗi "Bạn không có quyền", đó là do thiết kế - hãy liên hệ với người có quyền hạn cao hơn (Leader hoặc Admin) để giúp bạn.
+</Callout>
+
+<Callout type="tip">
+**Yêu cầu nâng cấp quyền**
+
+Nếu công việc của bạn yêu cầu quyền hạn cao hơn vai trò hiện tại (ví dụ: Staff cần tạo công việc), hãy liên hệ Admin để xin nâng vai trò.
+</Callout>
+
+---
+
+## Bài liên quan
+
+- [Cách bắt đầu nhanh — Nhân viên](/quick-start/staff)
+- [Cách bắt đầu nhanh — Trưởng nhóm](/quick-start/leader)
+- [Thuật ngữ hệ thống](/quick-start/thuat-ngu)
+
+---
+
+*Cập nhật lần cuối: 2026-04-14 — Phiên bản ứng dụng: 2.4.0*
