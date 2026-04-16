@@ -1,0 +1,248 @@
+---
+title: File chỉ xem — bạn xem được gì
+roles: ["staff", "leader", "admin"]
+tags: ["file", "chỉ xem", "read-only", "preview", "tài liệu", "quyền truy cập"]
+lastUpdated: "2026-04-14"
+appVersion: "2.4.0"
+---
+
+Bài này giải thích khái niệm "file chỉ xem" và những gì bạn có thể làm với các loại file khác nhau trong hệ thống.
+
+<Callout type="note" title="File chỉ xem là gì?">
+File chỉ xem (read-only) là tài liệu mà bạn chỉ có thể **xem nội dung**, nhưng **không thể chỉnh sửa, tải về, hoặc xóa** — để bảo vệ dữ liệu gốc và duy trì tính toàn vẹn.
+</Callout>
+
+---
+
+## Tại sao lại có file chỉ xem?
+
+### Bảo vệ dữ liệu quan trọng
+Những file chứa quy trình, hướng dẫn, hoặc dữ liệu nhạy cảm không nên bị chỉnh sửa bởi nhân viên thông thường.
+
+### Tránh nhầm lẫn
+Nếu mọi người có thể sửa, có thể dẫn đến **nhiều phiên bản** file khác nhau, gây nhầm lẫn và mất dữ liệu.
+
+### Audit trail (Theo dõi lịch sử)
+Admin cần biết ai, khi nào, và sửa gì trong tài liệu quan trọng.
+
+---
+
+## Các loại file và quyền truy cập
+
+### 1. File chỉ xem mặc định
+
+**Đặc điểm:**
+- Người tạo hoặc Admin đánh dấu là "chỉ xem"
+- Bạn chỉ có thể **xem preview** (trong browser)
+- Không thể **tải về** hoặc **chỉnh sửa**
+
+**Ví dụ file loại này:**
+- Hướng dẫn sử dụng hệ thống (PDF)
+- Quy định công ty (Word)
+- Mẫu form chuẩn (Excel)
+
+**Quyền truy cập theo role:**
+
+| Hành động | Staff | Leader | Admin |
+|-----------|-------|--------|-------|
+| Xem preview | ✅ | ✅ | ✅ |
+| Xem chi tiết file | ✅ | ✅ | ✅ |
+| Tải về máy | ❌ | ❌ | ✅ |
+| Chỉnh sửa | ❌ | ❌ | ❌ |
+| Xóa file | ❌ | ❌ | ✅ |
+| Thay đổi quyền | ❌ | ❌ | ✅ |
+
+---
+
+### 2. File bình thường (có thể download)
+
+**Đặc điểm:**
+- Không bị đánh dấu là "chỉ xem"
+- Bạn có thể **xem, tải về, chỉnh sửa** (tham thuộc vào quyền)
+- Thường là file đính kèm trong tin nhắn hoặc công việc
+
+**Ví dụ file loại này:**
+- Ảnh chứng minh công việc
+- Tài liệu thảo luận
+- File data/Excel làm việc
+
+**Quyền truy cập:**
+
+| Hành động | Staff | Leader | Admin |
+|-----------|-------|--------|-------|
+| Xem preview | ✅ | ✅ | ✅ |
+| Tải về máy | ✅ | ✅ | ✅ |
+| Chỉnh sửa online* | ⚠️ | ⚠️ | ⚠️ |
+| Tăng quyền (share) | ⚠️ | ⚠️ | ✅ |
+| Xóa file | ⚠️ | ⚠️ | ✅ |
+
+*Chỉnh sửa online = tùy vào cấu hình server (có thể bị tắt)
+
+---
+
+## Loại file được hỗ trợ preview
+
+Hệ thống cho phép **xem trực tiếp** (preview) các loại file sau **mà không cần tải về**:
+
+### Tài liệu Office
+- **Word:** .docx, .doc
+- **Excel:** .xlsx, .xls (bảng tính, không công thức)
+- **PowerPoint:** .pptx, .ppt
+
+### Hình ảnh
+- **.jpg / .jpeg** — Ảnh chụp, DSLR
+- **.png** — Ảnh đồ hoạ, screenshot
+- **.gif** — Ảnh động
+- **.webp** — Ảnh web hiệu quả
+- **.svg** — Vector graphic
+
+### PDF & Tài liệu
+- **.pdf** — Tài liệu PDF (có thể là ảnh hoặc text)
+- **.txt** — Tệp văn bản
+
+### Video & Media
+- **.mp4** — Video phổ biến
+- **.mov** — Video Apple
+
+### Mã & Dữ liệu
+- **.csv** — Dữ liệu bảng (có thể xem như bảng)
+- **.xml** — Dữ liệu XML
+
+---
+
+## File không được hỗ trợ preview
+
+Những loại file này **phải tải về** để xem:
+
+| Loại file | Ví dụ | Cách xem |
+|-----------|--------|---------|
+| Nén (Archive) | .zip, .rar, .7z | Phần mềm nén (WinRAR, 7-Zip) |
+| Cơ sở dữ liệu | .db, .sqlite | Phần mềm DB (DB Browser) |
+| Executable | .exe, .msi | Cố ý không preview (bảo mật) |
+| Tệp hệ thống | .dll, .sys | Cố ý không preview (bảo mật) |
+
+---
+
+## Cách xem file trong hệ thống
+
+### Bước 1 — Tìm file
+
+**Trong tin nhắn:**
+```
+[Avatar] Người gửi    10:30 AM
+  "Bạn xem file báo cáo này nhé"
+  📎 report-March-2026.pdf  (2.5 MB)
+```
+
+**Trong công việc:**
+```
+Chi tiết công việc
+├── Tiêu đề: Kiểm tra báo cáo
+├── Thời hạn: 15-03-2026
+└── 📎 File đính kèm
+   ├── final-report.docx
+   └── evidence.zip
+```
+
+### Bước 2 — Bấm file để xem preview
+
+- Nếu file hỗ trợ preview → **xem trực tiếp** trong click panel
+- Nếu không → nút **"Tải về"** sẽ hiện bên cạnh
+
+### Bước 3 — Chọn hành động
+
+| Hành động | Nút | Khi nào dùng |
+|-----------|-----|-------------|
+| Xem full screen | 🖥️ | Preview quá nhỏ, muốn xem to |
+| Tải về máy | ⬇️ | Cần file gốc để làm việc |
+| Chia sẻ link | 🔗 | Gửi link file cho người khác |
+| Xem thông tin | ℹ️ | Kiểm tra kích thước, ngày tải lên |
+
+---
+
+## Quyền xem file theo Department
+
+<Callout type="warning" title="File có thể giới hạn theo phòng ban">
+Admin có thể thiết lập **file chỉ dành cho phòng bộ phận cụ thể**. Nếu bạn không thấy file mặc dù biết nó tồn tại, có thể do:
+- Không có quyền truy cập (khác department)
+- File đã bị xóa
+- File bị giới hạn cho role cao hơn
+</Callout>
+
+**Ví dụ:**
+- File "Hướng dẫn kế toán" → chỉ phòng Kế toán xem được
+- File "Quy trình bán hàng" → chỉ phòng Kinh doanh + Admin xem được
+- File "Quy định công ty" → tất cả mọi người xem được
+
+### Cách kiểm tra quyền file
+
+1. Bấm vào file → xem **thông tin file** (ℹ️)
+2. Kiểm tra mục **"Ai có thể xem"** hoặc **"Phạm vi"**
+3. Nếu không thấy, liên hệ Admin
+
+---
+
+## Tình huống thường gặp
+
+### ❓ Tôi không thể tải file xuống — tại sao?
+
+**Nguyên nhân:**
+1. File đánh dấu **"chỉ xem"** (read-only) — chỉ xem preview được
+2. Quyền truy cập bị giới hạn — không có quyền tải
+3. File bị xóa hoặc lỗi server
+
+**Cách xử lý:**
+- Nếu cần file để chỉnh sửa → liên hệ người tạo hoặc Admin
+- Nếu là file chỉ xem → screenshot hoặc copy nội dung từ preview
+- Nếu lỗi → quên lại sau 1-2 phút hoặc liên hệ IT
+
+### ❓ File này lớn quá, preview đang load lâu
+
+**Nguyên nhân:** File lớn (>100 MB) tiêu tốn bandwidth preview
+
+**Cách xử lý:**
+- **Chờ thêm 10-15 giây** nếu tốc độ internet chậm
+- **Tải về** và xem offline nhanh hơn
+- Nếu vẫn ko xem được → file có thể bị hỏng hoặc format không hỗ trợ
+
+### ❓ Tôi muốn chỉnh sửa file chỉ xem
+
+**Không thể:** File chỉ xem được bảo vệ cố ý
+
+**Cách giải quyết:**
+1. **Yêu cầu Admin/Leader:**
+   - "Tôi cần chỉnh sửa file X, có thể gỡ bỏ quyền chỉ xem không?"
+2. **Admin có 2 cách:**
+   - Gỡ bỏ "chỉ xem" để bạn chỉnh sửa
+   - Tạo bản copy mà bạn có thể sửa
+
+### ❓ Ai là người tạo file này? Tôi muốn hỏi
+
+**Cách kiểm tra:**
+1. Bấm file → **Thông tin file** (ℹ️)
+2. Tìm mục **"Người tải lên"** hoặc **"Người tạo"**
+3. @mention người đó hoặc gửi DM
+
+---
+
+## Nguyên tắc bảo mật file
+
+<Callout type="tip" title="5 nguyên tắc xử lý file">
+1. **Chỉ tải file từ nguồn tin cậy** — không tải file từ người lạ
+2. **Chỉ share file cần thiết** — không chia sẻ thông tin nhạy cảm
+3. **Xóa file lạ sau khi xem** — để tránh vô tình chia sẻ
+4. **Báo cáo file lạ** — nếu thấy file nghi ngờ, báo Admin
+5. **Không chỉnh sửa file chỉ xem** — tôn trọng chính sách bảo vệ
+</Callout>
+
+---
+
+## Bài liên quan
+
+- [Cách bắt đầu nhanh — Nhân viên](/quick-start/staff)
+- [Quy tắc phân quyền](/quick-start/phan-quyen)
+- [Thuật ngữ hệ thống](/quick-start/thuat-ngu)
+
+---
+
+*Cập nhật lần cuối: 2026-04-14 — Phiên bản ứng dụng: 2.4.0*
